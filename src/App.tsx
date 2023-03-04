@@ -4,12 +4,14 @@ import Task from "./components/Tasks"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 function App(){
+  
   const [List,setList]=useState([])
   const renderTask=({item})=>(<Task text={item}/>)
+  
   return(
     <SafeAreaView style={styles.container}>
       
-      <Header counter="0"/>
+      <Header setCounter={0}/>
       
       <View >
         <FlatList

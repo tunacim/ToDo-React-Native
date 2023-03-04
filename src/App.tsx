@@ -1,22 +1,25 @@
 import React,{useState} from "react";
-import {View,Text,SafeAreaView, StyleSheet} from "react-native"
+import {View,Text,SafeAreaView, StyleSheet,FlatList} from "react-native"
 import Task from "./components/Tasks"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 function App(){
+  const [List,setList]=useState([])
+  const renderTask=({item})=>(<Task text={item}/>)
   return(
     <SafeAreaView style={styles.container}>
-      <View>
+      
       <Header counter="0"/>
       
-      <View > 
-        <Task  text="evi temizle"/>
+      <View >
+        <FlatList
+        data={List}
+        renderItem={renderTask}
+        />
+        </View>
         
-        </View>
-        <View>
-          <Footer></Footer>
-        </View>
-      </View>
+     <Footer List={List} setList={setList}></Footer>
+    
       </SafeAreaView>
   )
 }

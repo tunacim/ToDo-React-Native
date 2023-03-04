@@ -1,12 +1,17 @@
 
-import React from "react";
-import {View,Text,SafeAreaView,TextInput,TouchableOpacity} from "react-native"
+import React,{useState} from "react";
+import {View,Text,SafeAreaView,TextInput,TouchableOpacity, Alert} from "react-native"
 import styles from "./Footer.style"
-const Footer =(props)=>{
+const Footer =({List,setList})=>{
+    const[text,setText]=useState("")
+    const SaveText=()=>{
+        setList([...List,text])
+        setText("")
+    }
     return(
         <View style={styles.footer}>
-            <TextInput style ={styles.input}placeholder="Yapılacaklar">{props.text}</TextInput>
-            <TouchableOpacity style={styles.save}>
+            <TextInput onChangeText={setText} style ={styles.input}placeholder="Yapılacaklar"/>
+            <TouchableOpacity  style={styles.save} onPress={SaveText}>
                 <Text style={styles.saveText}>kaydet</Text>
             </TouchableOpacity>
         </View>

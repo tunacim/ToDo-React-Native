@@ -7,11 +7,13 @@ function App(){
   
   const [List,setList]=useState([])
   const renderTask=({item})=>(<Task text={item}/>)
+ 
+  
   
   return(
     <SafeAreaView style={styles.container}>
       
-      <Header setCounter={0}/>
+      <Header setCounter={List.length}/>
       
       <View >
         <FlatList
